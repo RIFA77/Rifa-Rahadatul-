@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Keren</title>
+    <!-- Jelaskan Kodingan ini apa -->
+    <script src="https://cdn.tailwindcss.com"></script> <!-- codingan ini untuk memasukan Tailwind. jadi kita bisa langsung styling pakai class-class Tailwind tanpa harus bikin sendiri. -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet"> <!-- kode ini fungsinya untuk ngambil font inter dari Google Fonts. Jadi nanti semua tulisan di halaman bisa pakai font inter biar tulisan di web nya lebih bagus dan gapake font bawaan.-->
+    <link href="style" rel="stylesheet"> <!--Ini buat nyambungin file CSS saya sendiri ke HTML, biar styling tambahan yang saya buat bisa muncul di websitenya. -->
+    
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+
+    <div class="w-full max-w-sm bg-gray-800 rounded-2xl shadow-2xl p-6 space-y-4">
+        
+        <p class="text-center text-xl font-semibold">RIFA RAHADATUL A. – 1710624151 </p>
+        <!-- Jelaskan Kodingan ini apa -->
+        <div> <!-- Bagian ini adalah container atau wadah. Jadi semua elemen di dalamnya itu dibungkus sama div ini.-->
+            <img id="statusImage" 
+                 src="https://placehold.co/400x100/374151/E5E7EB?text=Kalkulator" 
+                 alt="Status Kalkulator" 
+                 class="w-full rounded-lg transition-all duration-300 ease-in-out shadow-inner">
+                 <!--<img id="statusImage" ...> Ini elemen gambar. Gambar ini punya id statusImage, jadi nanti bisa dipanggil lewat JavaScript kalau mau diganti atau di-edit. -->
+                 <!-- link gambar yang dipakai. Ini sebenarnya gambar placeholder, ukuran 400x100, warnanya abu-abu, dan ada teks ‘Kalkulator’-nya. -->
+                 <!--Alt itu teks alternatif. Kalau gambarnya gagal muncul, tulisan ini yang ditampilkan. -->
+                 <!--Ini class-class Tailwind CSS. Fungsinya buat styling gambar biar lebih bagus dan ini bisa kita custom sesaui mau kita. 
+w-full → gambarnya ikut lebar container
+rounded-lg → sudut gambarnya dibikin agak melengkung
+transition-all duration-300 ease-in-out → kalau gambarnya berubah, animasinya halus
+shadow-inner → nambahin bayangan-->
+        </div>
+
+        <!-- Jelaskan Kodingan ini apa -->
+        <div class="bg-gray-900 rounded-lg p-4 shadow-inner"> <!--Div ini dipakai sebagai wadah untuk input kalkulatornya.
+bg-gray-900 → background-nya hitam gelap 
+rounded-lg → sudutnya dibikin agak bulat
+p-4 → dikasih padding biar ada jarak
+shadow-inner → ngasih bayangan biar kelihatan lebih dalam-->
+            <input type="text" id="display" 
+                   class="w-full bg-transparent text-right text-5xl font-mono text-white border-0 outline-none p-2" 
+                   readonly 
+                   placeholder="0"> <!--Ini teks awal yang muncul sebelum ada input. Jadi default-nya nunjukkin angka 0.-->
+        </div>
+        <!--<input type="text" id="display". Ini input field yang dipakai buat nampilin angka atau hasil kalkulator.-->
+        <!-- readonly:Input ini cuma buat ditampilkan aja, jadi user nggak bisa ngeklik dan ngetik sembarangan.-->
+        <!--w-full → lebarnya full satu baris
+bg-transparent → background-nya transparan 
+text-right → teksnya rata kanan (kayak kalkulator beneran)                   
+text-5xl → ukuran teksnya besar                   
+font-mono → pakai font monospaced biar angka lebih rapi                  
+text-white → warnanya putih                   
+border-0 → nggak ada border                  
+outline-none → pas diklik nggak muncul garis outline  
+p-2 → dikasih padding biar nggak mepet”-->
+<!-- readonly: Input ini cuma buat ditampilkan aja, jadi user nggak bisa ngeklik dan ngetik sembarangan.-->
+        <!-- Jelaskan Kodingan ini apa -->
+        <div class="grid grid-cols-4 gap-3"> <!--Div ini untuk bikin layout tombol kalkulatornya. grid → biar elemennya jadi grid, grid-cols-4 → grid-nya dibagi jadi 4 kolom, gap-3 → jarak antar tombolnya dikasih sedikit space.-->
+            <!-- Jelaskan Kodingan ini apa -->
+            <button data-value="C" class="btn-calc text-2xl font-bold bg-red-600 hover:bg-red-500 rounded-lg p-5 shadow-md text-white">C</button> <!--Ini tombol untuk clear (hapus semua) data value c ini nanti dipakai JavaScript buat tahu fungsi tombol ini.
+Styling-nya pakai Tailwind:
+text-2xl → tulisan gede
+font-bold → tebal
+bg-red-600 → tombol warna merah
+hover:bg-red-500 → pas di-hover warnanya jadi sedikit lebih terang
+rounded-lg → sudut membulat
+p-5 → ada padding
+shadow-md → bayangan biar kelihatan timbul
+text-white → teksnya putih -->
+            <button data-value="DEL" class="btn-calc text-2xl font-bold bg-gray-600 hover:bg-gray-500 rounded-lg p-5 shadow-md text-white">DEL</button> <!--DEL → buat hapus satu angka-->
+            <button data-value="%" class="btn-calc text-2xl font-bold bg-gray-600 hover:bg-gray-500 rounded-lg p-5 shadow-md text-white">%</button> <!--% → buat persen-->
+            <button data-value="/" class="btn-calc text-2xl font-bold bg-blue-600 hover:bg-blue-500 rounded-lg p-5 shadow-md text-white">/</button> <!--/ → buat pembagian-->
+
+            <!--  Jelaskan Kodingan ini apa  -->
+            <button data-value="7" class="btn-calc text-2xl font-bold bg-gray-700 hover:bg-gray-600 rounded-lg p-5 shadow-md text-white">7</button>
+            <button data-value="8" class="btn-calc text-2xl font-bold bg-gray-700 hover:bg-gray-600 rounded-lg p-5 shadow-md text-white">8</button>
+            <button data-value="9" class="btn-calc text-2xl font-bold bg-gray-700 hover:bg-gray-600 rounded-lg p-5 shadow-md text-white">9</button>
+            <!--Ketiga tombol ini sama fungsinya, yaitu tombol angka untuk kalkulator. Setiap tombol punya atribut data-value sesuai angkanya, jadi nanti JavaScript tahu angka mana yang dipencet.-->
+            <!--Styling-nya pakai Tailwind:
+text-2xl → ukuran teks besar
+font-bold → tulisan tebal
+bg-gray-700 → tombolnya warna abu gelap
+hover:bg-gray-600 → pas di-hover warnanya sedikit lebih terang
+rounded-lg → sudutnya melengkung
+p-5 → padding biar tombolnya lebih besar
+shadow-md → ada efek bayangan
+text-white → teks warna putih-->
+            <button data-value="*" class="btn-calc text-2xl font-bold bg-blue-600 hover:bg-blue-500 rounded-lg p-5 shadow-md text-white">*</button>
+            <!--Tombol ini buat operasi perkalian. data-value="*" nanti dipakai JavaScript buat menjalankan operator kali. Styling-nya hampir sama, cuma: warnanya biru (bg-blue-600),pas di-hover jadi lebih terang (hover:bg-blue-500), Supaya beda dari tombol angka.-->
+
+            <!--  Jelaskan Kodingan ini apa  -->
+            <button data-value="4" class="btn-calc text-2xl font-bold bg-gray-700 hover:bg-gray-600 rounded-lg p-5 shadow-md text-white">4</button>
+            <button data-value="5" class="btn-calc text-2xl font-bold bg-gray-700 hover:bg-gray-600 rounded-lg p-5 shadow-md text-white">5</button>
+            <button data-value="6" class="btn-calc text-2xl font-bold bg-gray-700 hover:bg-gray-600 rounded-lg p-5 shadow-md text-white">6</button>
+            <!-- Ketiga tombol ini adalah tombol angka biasa. Setiap tombol punya data-value sesuai angkanya, jadi nanti JavaScript bisa tahu angka mana yang diklik user.-->
+            <!--Styling-nya sama semua, pakai Tailwind:
+text-2xl → tulisan besar
+font-bold → tebal
+bg-gray-700 → tombol warna abu gelap
+hover:bg-gray-600 → warna abu yang lebih terang waktu di-hover
+rounded-lg → sudut tombol melengkung
+p-5 → ada padding biar tombolnya gede
+shadow-md → ada bayangan
+text-white → teks warna putih-->
+            <button data-value="-" class="btn-calc text-2xl font-bold bg-blue-600 hover:bg-blue-500 rounded-lg p-5 shadow-md text-white">-</button>
+            <!-- Tombol ini buat operasi pengurangan. data-value="-" nanti dipakai script untuk menjalankan fungsi minus. Styling-nya mirip tombol operator lainnya: warnanya biru (bg-blue-600) berubah lebih terang saat di-hover (hover:bg-blue-500) Supaya beda dari tombol angka biasa.-->
+
+            <!--  Jelaskan Kodingan ini apa  -->
+            <button data-value="1" class="btn-calc text-2xl font-bold bg-gray-700 hover:bg-gray-600 rounded-lg p-5 shadow-md text-white">1</button>
+            <button data-value="2" class="btn-calc text-2xl font-bold bg-gray-700 hover:bg-gray-600 rounded-lg p-5 shadow-md text-white">2</button>
+            <button data-value="3" class="btn-calc text-2xl font-bold bg-gray-700 hover:bg-gray-600 rounded-lg p-5 shadow-md text-white">3</button>
+            <!--Tiga tombol ini adalah tombol angka untuk kalkulator. Setiap tombol punya data-value sesuai angkanya, jadi nanti JavaScript bisa tau angka mana yang ditekan.-->
+            <!--Styling-nya sama semua:
+text-2xl → ukuran tulisan besar
+font-bold → tebal
+bg-gray-700 → warna abu gelap
+hover:bg-gray-600 → jadi sedikit lebih terang kalau di-hover
+rounded-lg → sudutnya melengkung
+p-5 → biar tombolnya lebih besar
+shadow-md → ada efek bayangan
+text-white → warna tulisannya putih-->
+            <button data-value="+" class="btn-calc text-2xl font-bold bg-blue-600 hover:bg-blue-500 rounded-lg p-5 shadow-md text-white">+</button>
+            <!--Tombol ini buat operasi tambah. data-value="+" nanti dipakai script buat ngejalanin fungsi penjumlahan. Styling-nya sama kayak tombol operator lain: warna biru (bg-blue-600) pas di-hover jadi lebih terang (hover:bg-blue-500) Supaya keliatan beda dari tombol angka.-->
+
+            <!--  Jelaskan Kodingan ini apa  -->
+            <button data-value="0" class="btn-calc col-span-2 text-2xl font-bold bg-gray-700 hover:bg-gray-600 rounded-lg p-5 shadow-md text-white">0</button>
+            <!-- Tombol ini buat angka 0. data-value="0" dipakai buat ngirim nilai 0 ke JavaScript waktu tombolnya diklik.-->
+            <!--Styling tombol 0:
+col-span-2 → tombolnya dilebarin jadi dua kolom (biar lebih panjang dari tombol lain)
+text-2xl → ukuran teks besar
+font-bold → tebal
+bg-gray-700 → warnanya abu gelap
+hover:bg-gray-600 → lebih terang waktu di-hover
+rounded-lg → sudut melengkung
+p-5 → padding besar
+shadow-md → ada bayangan
+text-white → tulisan warna putih-->
+            <button data-value="." class="btn-calc text-2xl font-bold bg-gray-700 hover:bg-gray-600 rounded-lg p-5 shadow-md text-white">.</button>
+            <!--Tombol ini dipakai buat input angka desimal. data-value="." nanti diproses sama JavaScript buat nambahin tanda titik di angka. Styling-nya sama kayak tombol angka lain. -->
+            <button data-value="=" class="btn-calc text-2xl font-bold bg-green-600 hover:bg-green-500 rounded-lg p-5 shadow-md text-white">=</button>
+            <!--Tombol ini untuk ngasih hasil perhitungan. data-value="=" dipakai buat manggil fungsi ‘calculate’ atau eksekusi hasil di JavaScript.
+Styling tombol ini beda karena tombol penting:
+bg-green-600 → warnanya hijau
+hover:bg-green-500 → jadi lebih terang waktu di-hover
+Tanda kalau tombol ini adalah tombol eksekusi.-->
+        </div>
+
+    </div>
+
+    <script src="script"></script><!--Bagian ini dipakai buat nyambungin file JavaScript saya ke halaman HTML. Jadi kode JS yang ada di file bernama script itu nanti dijalankan sama halaman ini. Biasanya isi file itu buat ngatur logika kalkulatornya, misalnya tombolnya berfungsi atau ngitung hasilnya.-->
+</body>
+</html>
